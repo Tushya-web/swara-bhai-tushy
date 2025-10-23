@@ -11,6 +11,56 @@
         .font-serif {
             font-family: 'Georgia', 'Times New Roman', serif;
         }
+
+        /* Base styles for both buttons */
+.navigation-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* space-x-2 */
+    padding: 0.5rem 1rem; /* px-4 py-2 */
+    border-radius: 9999px; /* rounded-full */
+    transition: all 300ms ease-in-out;
+    border: none;
+    cursor: pointer;
+}
+
+/* Glowing effect for the 'Back' button (Blue) */
+.back-btn-glow {
+    background-color: #dbeafe; /* bg-blue-100 */
+    color: #2563eb; /* text-blue-600 */
+    /* Base box-shadow for a soft, initial glow */
+    box-shadow: 0 0 8px rgba(37, 99, 235, 0.4); /* Blue glow */
+}
+
+/* Hover/Active states to intensify the glow and effect */
+.back-btn-glow:hover {
+    background-color: #bfdbfe; /* hover:bg-blue-200 */
+    box-shadow: 0 0 12px rgba(37, 99, 235, 0.6), 0 0 20px rgba(37, 99, 235, 0.2);
+}
+
+.back-btn-glow:active {
+    transform: scale(0.95); /* active:scale-95 */
+    box-shadow: 0 0 5px rgba(37, 99, 235, 0.8); /* Slightly tighter glow on press */
+}
+
+/* Glowing effect for the 'Next' button (Pink/Fuchsia) */
+.next-btn-glow {
+    background-color: #fce7f3; /* bg-pink-100 */
+    color: #db2777; /* text-pink-600 */
+    /* Base box-shadow for a soft, initial glow */
+    box-shadow: 0 0 8px rgba(219, 39, 119, 0.4); /* Pink glow */
+}
+
+/* Hover/Active states to intensify the glow and effect */
+.next-btn-glow:hover {
+    background-color: #fbcfe8; /* hover:bg-pink-200 */
+    box-shadow: 0 0 12px rgba(219, 39, 119, 0.6), 0 0 20px rgba(219, 39, 119, 0.2);
+}
+
+.next-btn-glow:active {
+    transform: scale(0.95); /* active:scale-95 */
+    box-shadow: 0 0 5px rgba(219, 39, 119, 0.8); /* Slightly tighter glow on press */
+}
         
         /* Custom Keyframes */
         @keyframes page-transition-in {
@@ -254,19 +304,18 @@
 
     </main>
 
-    <!-- Navigation Controls -->
-    <footer id="footer" class="p-4 md:p-6 flex justify-between items-center w-full max-w-4xl mx-auto">
-        <button id="back-btn" onclick="navigate(-1)" class="flex items-center space-x-2 px-4 py-2 rounded-full transition duration-300 active:scale-95 bg-blue-100 text-blue-600 hover:bg-blue-200">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-            <span>← Back</span>
-        </button>
-        <p id="page-indicator" class="text-sm text-gray-500">Page 1 of 6</p>
-        <button id="next-btn" onclick="navigate(1)" class="flex items-center space-x-2 px-4 py-2 rounded-full transition duration-300 active:scale-95 bg-pink-100 text-pink-600 hover:bg-pink-200">
-            <span>Next →</span>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-        </button>
-    </footer>
-
+<div id="navigation-bar" class="sticky top-0 z-10 p-4 md:p-6 flex justify-between items-center w-full max-w-4xl mx-auto bg-white/90 backdrop-blur-sm border-b border-gray-200">
+    <button id="back-btn" onclick="navigate(-1)" class="navigation-btn back-btn-glow">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+        <span>← Back</span>
+    </button>
+    <p id="page-indicator" class="text-sm text-gray-500">Page 1 of 6</p>
+    <button id="next-btn" onclick="navigate(1)" class="navigation-btn next-btn-glow">
+        <span>Next →</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+    </button>
+</div>
+    
 <script>
     // --- Global State and Constants ---
     const TOTAL_PAGES = 6;
